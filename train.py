@@ -62,11 +62,6 @@ def main(args):
     wo_class_error = False
     model.to(device)
 
-    from util.profile import get_GFLOPs
-    input = torch.rand((1, 6, 260, 346)).to(device)
-    get_GFLOPs.profile(model, input=(input,))
-
-
     if args.use_ema:
         ema_m = ModelEma(model, args.ema_decay)
     else:
